@@ -10,6 +10,8 @@ function App() {
       
       <Menu/>
       <h1>Hello World</h1>
+
+      <Menu/>
       
       <Button variant="outline-primary">Primary</Button>{' '}
 
