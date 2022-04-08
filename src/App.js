@@ -13,6 +13,7 @@ import { BrowserRouter, Route, Routes,} from 'react-router-dom';
 import Contador from './pages/Contador';
 import FilmesPopulares from './pages/filmes/FilmesPopulares';
 import FilmesDetalhes from './pages/filmes/FilmesDetalhes';
+import FilmesLançamento from './pages/filmes/FilmesLançamento';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
       <Route path="/contador" element={<Contador/>}/>
       <Route path="/filmes/populares" element={<FilmesPopulares/>}/>
       <Route path="/filmes/:id" element={<FilmesDetalhes/>}/>
+      <Route path="/filmes/lancamento" element={<FilmesLançamento/>}/>
       
     </Routes>
   </BrowserRouter>
