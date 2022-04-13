@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import apiFilmes from '../../services/apiFilmes'
 
 const FilmesDetalhes = () => {
   
     const params = useParams()
+    const navigate = useNavigate
     const [filme, setFilme] = useState({})
+    navigate(-1)
 
     useEffect(()=>{
 
@@ -19,6 +21,10 @@ const FilmesDetalhes = () => {
 
     return (
     <div>
+      {!filme.id && <h1>Carregando... Aguarde!</h1>}
+
+      {filme.id &&
+      <div>
         <Container>
         <h1>{filme.title}</h1>
         <Row>
@@ -32,10 +38,22 @@ const FilmesDetalhes = () => {
                     <p><strong>Popularidade: </strong>{filme.popularity}</p>
                     <p><strong>Data de Lançamento: </strong>{filme.release_date}</p>
                     <p><strong>Orçamento: </strong>{filme.budget}</p>
+                    
+                    <p><strong>Gêneros: </strong> {filme.genres.map(item => (
+                      <span>{item.name}, </span>
+                    ))}
+                    </p>
+                    
                     <p><strong>Sinopse: </strong>{filme.overview}</p>
+
+                    
+                    <Link className='btn btn-secondary' to={-1}>Voltar</Link>
               </Col>
             </Row>
         </Container>
+      </div>
+
+    }
     </div>
   )
 }
