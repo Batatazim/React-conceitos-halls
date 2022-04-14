@@ -31,9 +31,9 @@ const FilmesPopulares = () => {
           <Card.Title>{item.title}</Card.Title>
           <Card.Text>Titulo original: {item.original_title}</Card.Text>
           <Card.Text>Popularidade: {item.popularity}</Card.Text>
-    <Link className='btn btn-secondary' to={'/filmes/' + item.id}>Ver detalhes</Link>
-  </Card.Body>
-</Card>
+       <Link className='btn btn-secondary' to={'/filmes/' + item.id}>Ver detalhes</Link>
+       </Card.Body>
+       </Card>
        </Col>
      ))}
      </Row>

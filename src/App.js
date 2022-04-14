@@ -14,6 +14,8 @@ import Contador from './pages/Contador';
 import FilmesPopulares from './pages/filmes/FilmesPopulares';
 import FilmesDetalhes from './pages/filmes/FilmesDetalhes';
 import FilmesLançamento from './pages/filmes/FilmesLançamento';
+import DetalhesdoAtor from './pages/Atores/DetalhesdoAtor';
+import FilmesCartaz from './pages/filmes/FilmesCartaz';
 
 
 function App() {
@@ -34,6 +36,8 @@ function App() {
       <Route path="/filmes/populares" element={<FilmesPopulares/>}/>
       <Route path="/filmes/:id" element={<FilmesDetalhes/>}/>
       <Route path="/filmes/lancamento" element={<FilmesLançamento/>}/>
+      <Route path="/filmes/cartaz" element={<FilmesCartaz/>}/>
+      <Route path="/atores/:id" element={<DetalhesdoAtor/>}/>
       
     </Routes>
   </BrowserRouter>

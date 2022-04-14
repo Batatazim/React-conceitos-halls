@@ -8,16 +8,25 @@ const FilmesDetalhes = () => {
     const params = useParams()
     const navigate = useNavigate
     const [filme, setFilme] = useState({})
-    navigate(-1)
-
+    const [atores, setAtores] = useState([])
+    
     useEffect(()=>{
 
        apiFilmes.get('movie/'+ params.id + '?language=pt-BR').then(resultado=>{
-           setFilme(resultado.data)
-          
+           setFilme(resultado.data)    
        })
-       
+    
     },[])
+
+    useEffect(()=>{
+
+      apiFilmes.get('movie/'+ params.id + '/credits' + '?language=pt-BR').then(resultado=>{
+          setAtores(resultado.data.cast)    
+      })
+   
+   },[])
+
+    
 
     return (
     <div>
@@ -38,21 +47,30 @@ const FilmesDetalhes = () => {
                     <p><strong>Popularidade: </strong>{filme.popularity}</p>
                     <p><strong>Data de Lançamento: </strong>{filme.release_date}</p>
                     <p><strong>Orçamento: </strong>{filme.budget}</p>
-                    
                     <p><strong>Gêneros: </strong> {filme.genres.map(item => (
                       <span>{item.name}, </span>
                     ))}
                     </p>
-                    
                     <p><strong>Sinopse: </strong>{filme.overview}</p>
-
-                    
                     <Link className='btn btn-secondary' to={-1}>Voltar</Link>
               </Col>
+              <Col md={12} className='mt-3'>
+                <h1>Atores</h1>
+              </Col>
+              <Row>
+              {atores.map(item=>(
+               <Col className='mb-3' md={2} key={item.id}>
+                <Link>
+                <Card title = {item.name}>
+                   <Card.Img variant="top" src={'https://image.tmdb.org/t/p/w500/' + item.profile_path} />
+                </Card>
+                </Link>
+               </Col>
+              ))}
+             </Row>
             </Row>
         </Container>
       </div>
-
     }
     </div>
   )
